@@ -118,3 +118,10 @@
   font-size: 15px;
   font-family: inherit;
 }
+
+.not_found{
+  width: 400px;
+  height: 400px;
+  object-fit: cover;
+  margin-top: 3rem;
+}

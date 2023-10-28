@@ -2,13 +2,14 @@ import React, { Component } from 'react'
 import Post from '../../components/Post/Post';
 import postsStyle from './posts.module.css'
 import { Loading } from '../../components/UI/Loading/Loading';
-import NotFound from '../../assets/image/search-bar.gif'
+import NotFound from '../../assets/image/no-result-2.gif'
 export default class Posts extends Component {
 
     state = {
         showLoading: true,
         posts: null,
-        search: ""
+        search: "",
+        className:""
     }
 
     componentDidMount() {
@@ -55,15 +56,18 @@ export default class Posts extends Component {
 
     render() {
         let posts = null;
+        let postsClassName= null;
         if (this.state.posts) {
             if (this.state.posts.length) {
                 posts = this.state.posts.map(item => {
                     return <Post key={item.id} post={item} />
                 })
+                postsClassName = postsStyle.posts;
             } else {
-                posts= <img src={NotFound} alt="not found" />
+                posts= <img src={NotFound} className={postsStyle.not_found}  alt="not found" />
+                postsClassName= postsStyle.posts_empty
             }
-
+            
         }
 
         let loading = null;
@@ -73,6 +77,7 @@ export default class Posts extends Component {
                     <span className={postsStyle.loader}></span>
                 </Loading>);
         }
+        // console.log(posts.type ?? "null type");
         return (
             <>
                 <div className={postsStyle.search_holder}>
@@ -83,7 +88,7 @@ export default class Posts extends Component {
                     />
                 </div>
                 <h1>All Posts</h1>
-                <div className={postsStyle.posts}>
+                <div className={postsClassName}>
                     {posts}
                     {loading}
                 </div>
