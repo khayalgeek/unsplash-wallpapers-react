@@ -125,3 +125,23 @@
   object-fit: cover;
   margin-top: 3rem;
 }
+
+.pagination_holder{
+  width: 100%;
+}
+.pagination_holder ul {
+  display: flex;
+  justify-content: center;
+
+}
+.pagination_holder ul li{
+  list-style: none;
+  padding: 10px;
+  border:1px solid gray;
+  font-variant-numeric: tabular-nums;
+  cursor: pointer;
+}
+
+.pagination_holder ul li:not(:last-child){
+  border-right:none;
+}
